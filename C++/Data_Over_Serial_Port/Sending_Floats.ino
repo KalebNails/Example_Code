@@ -3,7 +3,8 @@
 //Kaleb Nails
 //Created: 9/18/2022
 //Modified: 10/25/2022
-//Purpose: This shows a method of sending floating (or any type) data points over serial ports.
+//Purpose: This shows a method of sending floating (or any type) data points over serial ports. This is sending
+// to COBS_JSON_Float_Reciever.py in the python folder.
 //Original name: Packetresponse
 
 
