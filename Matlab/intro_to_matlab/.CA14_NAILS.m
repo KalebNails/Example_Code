@@ -32,7 +32,7 @@ imshow(bbird)
 % Forces display to have corrected aspect ratio 
 axis equal 
 
-% Forces the display to omit ìemptyî white areas above, below, left, or right of the image.
+% Forces the display to omit ‚Äúempty‚Äù white areas above, below, left, or right of the image.
 axis tight                   
 
 % Dimensions of array-note the 3 dimensions
@@ -61,7 +61,7 @@ axis tight
 rbird = bbird;               
 
 % The nested for-loop allows us to inspect each pixel to see whether it is 
-% blue enough to be part of the bluebirdís blue feathers.
+% blue enough to be part of the bluebird‚Äôs blue feathers.
 
 tic   % timing the image processing using for-loop
 
@@ -72,9 +72,9 @@ for row = 1:rows
          % The if-statement determines how blue a pixel is. 
          % If the blue channel is more than 20% larger than the mean of the three color channels:
          if bbird(row,col,3) > 1.08 * mean(bbird(row,col,:))
-            % it sets the red channelís value in redbirdís pixel to be equal to the blue channel of bluebirdís pixel
+            % it sets the red channel‚Äôs value in redbird‚Äôs pixel to be equal to the blue channel of bluebird‚Äôs pixel
             rbird(row,col,1) = bbird(row,col,3); 
-            % It then sets the green and blue channels in redbirdís pixel to zero, so that
+            % It then sets the green and blue channels in redbird‚Äôs pixel to zero, so that
             % there is no hint of green or blue
             rbird(row,col,2:3) = 0;
             
@@ -90,7 +90,7 @@ image(rbird)
 %forces diplay to have corrected aspect ratio
 axis equal  
 
-%forces the display to omit ìemptyî white areas above, below, left, or right of the image.
+%forces the display to omit ‚Äúempty‚Äù white areas above, below, left, or right of the image.
 axis tight                   
 
 %display both images side to side 
