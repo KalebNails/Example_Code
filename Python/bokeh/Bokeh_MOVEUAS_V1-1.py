@@ -1,7 +1,7 @@
-#Kaleb Nails
+#Author: Kaleb Nails
 #
 # Created: 11/1/22
-# Modified: 1/10/2023
+# Modified: 1/20/2023
 #Purpose: Create uses bokeh server to create a certain number of tables 
 # of user desided sizes live. THERE IS AN ISSUE WITH THIS CURRENTLY. It also
 # could be greatly condensed and optimized.  
