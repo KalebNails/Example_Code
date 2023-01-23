@@ -1,13 +1,13 @@
-#Author: Kaleb Nails
+#Kaleb Nails
 #
 # Created: 11/1/22
-# Modified: 1/20/2023
+# Modified: 1/23/2023
 #Purpose: Create uses bokeh server to create a certain number of tables 
 # of user desided sizes live. THERE IS AN ISSUE WITH THIS CURRENTLY. It also
 # could be greatly condensed and optimized.  
 
 # To run:  bokeh serve --show Test_file.py  
-# To run over wifi: bokeh serve --show --allow-websocket-origin=10.33.142.235:5006 --show Test_file.py
+# To run over wifi: bokeh serve --show --allow-websocket-origin=10.33.000.000:5006 Test_file.py
 from unicodedata import name
 from bokeh.models import CheckboxGroup, CheckboxButtonGroup, ColumnDataSource, TableColumn, DataTable, Select
 from bokeh.io import curdoc
@@ -18,17 +18,23 @@ from bokeh.models import ColumnDataSource, TableColumn, DataTable
 import pandas as pd
 
 import socket
-import time
+from datetime import datetime
 import json
 #This is for ethernet connection
 bufferSize = 1024
+#time server was created
+t0 = datetime.now()
 
-#This is the IP of the laptop
-ServerPort = 2222
-ServerIP = '169.254.26.44'
-RPIsocket = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
-RPIsocket.bind((ServerIP,ServerPort))
-RPIsocket.setblocking(False)
+#This is the IP of the laptop. If it wasn't in a try and failed it would crash the entire bokeh server
+try:
+    ServerPort = 2222
+    ServerIP = '169.254.26.44'
+    RPIsocket = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
+    RPIsocket.bind((ServerIP,ServerPort))
+    RPIsocket.setblocking(False)
+except:
+    print('No eithernet has been connect. Please connect before boot-up for live data')
+    pass
 
 #These variables are involved with preventing the checkboxes from being changed when locked
 global Variable_Lock
@@ -37,6 +43,10 @@ global Previous_Sensor
 Variable_Lock = []
 Lock_Vars_Name = ['Lock Parameters']
 selected = Div(background='lightskyblue' , width=800, text="""None Selected yet""", render_as_text=True)
+
+#This creates uptime boxes
+current_time_display = Div(background = 'lightgreen',width=1400,text="""Time-unstarted""", render_as_text=True)
+up_time_display = Div(background = 'crimson',width = 1000,text="""Bokeh-uptime-blank""", render_as_text=True)
 
 #Radio handler is just the function that is called when a button is selected, the new is just which button was selected in this case
 
@@ -185,10 +195,12 @@ def generate_tables():
 Lock_Button = CheckboxButtonGroup(labels = Lock_Vars_Name, active = [])
 Lock_Button.on_click(Lock_Button_handler)
 
-
+###### If you want to add update time, add a time column at the top, then increase the starting count by 1 and just manuelly set that one
+#to be the most current time, so 0 would just be time
 def callback_update_data():
+    
     try:
-        #READS the incoming data, and transforms that into a python dictionary
+        #reads the incoming data, and transforms that into a python dictionary
         message, address = RPIsocket.recvfrom(bufferSize)
         readable = message.decode('utf-8')
         
@@ -231,20 +243,22 @@ def callback_update_data():
                     except:
                         pass
 
-
-                
                 Tables.children[i].source.data = ds_new
             except:
                 pass
 
-    
     #when recvfrom blocking is false it will return this error when the buffer is empty
-    except BlockingIOError:
+    except BlockingIOError as error:
+        print(error)
+        pass
+    except OSError as error:
+        print(error)
         pass
 
-    finally:    
-        #print('hi')
-        pass
+    current_time = datetime.now()
+    current_time_display.text = 'Currently: {0} '.format(current_time.strftime("%c"))
+    up_time_display.text = 'Uptime: {0}'.format(str(current_time - t0).split('.')[0])
+
 
 
 
@@ -253,7 +267,7 @@ down_menus = layout([])
 Tables = layout([])
 
 
-layout = layout([   [selected],
+layout = layout([   [current_time_display], [up_time_display], [selected],
               [box_group, down_menus], [Lock_Button],[Tables]],sizing_mode='stretch_width')
 
 curdoc().add_root(layout)
