@@ -1,7 +1,7 @@
 #Author: Kaleb Nails
 #Created: 5/23/2023
 #Modified: 20/26/2023
-#Purpose: To send prerecorded data to the bokeh dashboard for it to be interpereted. 
+
 
 
 #Below is the genereal format for data as its printed of the sensors code
