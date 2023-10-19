@@ -1,4 +1,6 @@
 #Kaleb Nails
+
+import subprocess
 import discord
 
 intents = discord.Intents.all()  # This sets up a default set of intents
@@ -20,24 +22,32 @@ async def on_message(message):
     if message.author == client.user:
         #print('my own message')
         return
-    
+
     #This checks to see if a user asks for an IP adress
     if message.channel.name == 'whats-the-ip':# and message.content == 'ip?':
         print('correct channel')
         print('the message is: {}'.format(message.content))
 
-        if message.content == 'ip?':
 
+        if message.content.lower() == 'ifconfig':#'ip?':
             try:
-                # Try to open and read the content of the file
-                with open('Dummy_ip.txt', 'r') as file:
-                    file_content = file.read()
-                await message.channel.send(file_content)
+                ipconfig_txt = str(subprocess.getstatusoutput(f'ifconfig'))
+                #I am so very dyslexic, it took me like 10 minutes to figure out i swapped / for \ and i even specifically checked if i did
+                ipconfig_txt = ipconfig_txt.replace(r'\n','\n')
+                await message.channel.send(ipconfig_txt)
 
-            except FileNotFoundError:
-                # If the file is not found, send an error message
-                await message.channel.send("An error has occurred. 'Dummy_ip.txt' is not available.")
-                
+            except Exception as e:
+                await message.channel.send(f"An error has occurred: {str(e)}")
+
+
+
+        if message.content.lower() == 'traceroute':#'ip?':
+            try:
+                ipconfig_txt = str(subprocess.getstatusoutput(f'traceroute 1.2.3.4')) #This is for when you have a router in a subnet with a port foward, you can traceroute to a static IP in the network to see the routers IP
+                #I am so very dyslexic, it took me like 10 minutes to figure out i swapped / for \ and i even specifically checked if i did
+                ipconfig_txt = ipconfig_txt.replace(r'\n','\n')
+                await message.channel.send(ipconfig_txt)
+
             except Exception as e:
                 await message.channel.send(f"An error has occurred: {str(e)}")
 
