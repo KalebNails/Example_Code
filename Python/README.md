@@ -1,4 +1,5 @@
 # Python Example Code #
+# FOLDERS #
 
 ## CDP ##
 This contains some clusterduck code to be run on both the micro-controller and a laptop. This was for the NASA wildfire SBIR and developing the heltec esp32 lora boards using the cluster duck protocol.
@@ -26,6 +27,7 @@ run something that takes its IP and puts it to a .txt and then it will run the d
 ## example_bokeh_sensor_graph ##
 I don't remember exactly what this is, but I believe its a way to generate multiple tables in bokeh and the tables will all be in different tabs.
 
+# Files #
 
 ## measure_performance.py ##
 Wonderful code that I found online that uses a decorator to report all kinds of details about a function such as consumed ram, and time it took to ran. great for optimizing
