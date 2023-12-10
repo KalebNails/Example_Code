@@ -1,0 +1,103 @@
+clear;clc;
+% Define the points and their associated areas
+% For example, you can use the following data (z, y, area):
+points = [
+    0 0 .2;
+    0 6 .3;
+    4 6 .5;
+    8 6 .3;
+    8 0 .2;
+    4 0 .2]
+
+
+% Initialize variables to store the sum of weighted z and y coordinates
+sum_weighted_z = 0;
+sum_weighted_y = 0;
+total_area = 0;
+
+% Calculate the weighted sum of z and y coordinates
+for i = 1:size(points, 1)
+    z = points(i, 1); % Replace x with z
+    y = points(i, 2);
+    area = points(i, 3);
+    
+    sum_weighted_z = sum_weighted_z + (z * area);
+    sum_weighted_y = sum_weighted_y + (y * area);
+    
+    total_area = total_area + area;
+end
+
+% Calculate the centroid
+centroid_z = sum_weighted_z / total_area;
+centroid_y = sum_weighted_y / total_area;
+
+% Shift the points to the centroid's reference frame
+points_shifted = points;
+points_shifted(:, 1) = points_shifted(:, 1) - centroid_z; % Adjust the first column (formerly x) to z
+points_shifted(:, 2) = points_shifted(:, 2) - centroid_y;
+
+% Display the centroid coordinates
+fprintf('Centroid Coordinates: (%.2f, %.2f)\n', centroid_z, centroid_y);
+
+% Display the shifted points in terms of the centroid's reference frame
+fprintf('Shifted Points:\n');
+disp(points_shifted);
+
+
+%I am very dyslexic
+shifted_points = points_shifted;
+Iy = 0;
+Iz = 0;
+Iyz = 0;
+for i = 1:size(shifted_points, 1)
+    z = shifted_points(i, 1); % Replace x with z
+    y = shifted_points(i, 2);
+    area = shifted_points(i, 3);
+
+    Iy = shifted_points(i, 3)*z^2 + Iy;
+    Iz = shifted_points(i, 3)*y^2 + Iz;
+    Iyz = shifted_points(i, 3)*z*y + Iyz;
+
+
+end
+fprintf('Iy = %.4f in^4\n', Iy);
+fprintf('Iz = %.4f in^4\n', Iz);
+fprintf('Iyz = %.4f in^4\n', Iyz);
+
+%show shear flow equation
+vy = -8000;
+vz = 0;
+
+syms y_bar z_bar A_bar q_in q_out Vy_bar Vz_bar
+
+disp('shear stess with A v & y for find shear center:')
+delta_q_withV = ((Iy*Vy_bar-Iyz*Vz_bar)*y_bar*A_bar + (-Iyz*Vy_bar + Iz*Vz_bar)*z_bar*A_bar)/(Iy*Iz-Iyz^2);
+disp(vpa(delta_q_withV,4))
+
+disp('Normal shear stress equation:')
+delta_q = ((Iy*vy-Iyz*vz)*y_bar*A_bar + (-Iyz*vy + Iz*vz)*z_bar*A_bar)/(Iy*Iz-Iyz^2);
+disp(vpa(delta_q,4))
+
+
+
+
+
+My = 0;
+Mz = 640000;
+
+disp('STRESS EQUATION:')
+sigma = ((Iy*Mz-Iyz*My)*-y_bar + (Iyz*Mz + Iz*My)*z_bar)/(Iy*Iz-Iyz^2);
+disp(vpa(sigma,4))
+
+
+for points_stress_num = 1:length(shifted_points)
+    stress_index(points_stress_num) = subs(sigma, [y_bar, z_bar, A_bar], [shifted_points(points_stress_num,2), shifted_points(points_stress_num,1), shifted_points(points_stress_num,3)]);
+
+
+    delta_q_onlyV(points_stress_num) = ((Iy*Vy_bar-Iyz*Vz_bar)*shifted_points(points_stress_num,2)*shifted_points(points_stress_num,3) + (-Iyz*Vy_bar + Iz*Vz_bar)*shifted_points(points_stress_num,1)*shifted_points(points_stress_num,3))/(Iy*Iz-Iyz^2);
+
+end
+disp(double(stress_index))
+
+disp('POINTS shear stress equations in ONLY RIGHT SIDE, manually do deltaQ')
+disp(vpa(delta_q_onlyV',4))
