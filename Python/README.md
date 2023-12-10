@@ -25,3 +25,13 @@ run something that takes its IP and puts it to a .txt and then it will run the d
 
 ## example_bokeh_sensor_graph ##
 I don't remember exactly what this is, but I believe its a way to generate multiple tables in bokeh and the tables will all be in different tabs.
+
+
+## measure_performance.py ##
+Wonderful code that I found online that uses a decorator to report all kinds of details about a function such as consumed ram, and time it took to ran. great for optimizing
+
+## effective_area_structs.py ##
+This will take input points and their effective area of a body, give you the centriod, the shifted points, and the equation for stress and shear flow. As well as q_out-q_in for every point which you can use to solve. I also have a matlab version
+
+## effective_area_structs_fromC.py ##
+This is the same as effective_area_structs.py, but it starts you of from if you are given your centriod and shifted points already
