@@ -1,5 +1,5 @@
-# Python Example Code #
-# FOLDERS #
+# Python Example Code Folders#
+
 
 ## CDP ##
 This contains some clusterduck code to be run on both the micro-controller and a laptop. This was for the NASA wildfire SBIR and developing the heltec esp32 lora boards using the cluster duck protocol.
