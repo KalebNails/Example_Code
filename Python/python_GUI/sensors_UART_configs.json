@@ -1,0 +1,5 @@
+{
+  "alphasense": ["/dev/ttyUSB0"],
+  "sensirion": {},
+  "PMS": {}
+}
