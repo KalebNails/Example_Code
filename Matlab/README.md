@@ -4,7 +4,7 @@ A large amount of my matlab code is either for a class or for a project. So post
 # MATLAB Files #
 
 
-## Parabolic intercept ##
+## threeD_two_parabolas_collide.m ##
 This is software that takes an imaginary ball at the center at some point, calculates it maximium envelope or furthest point it can physically reach based on gravity, and initial speeds.
 Then it can calculate another parabolas interception point. This is shown in the image below. At some point i want to consider launch times, and other parameters. I would also at some point like
 incorperate drag into the envelope calculations.
