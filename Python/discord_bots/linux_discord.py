@@ -54,11 +54,10 @@ async def on_message(message):
 #HELP COMMAND
         if message.content.lower() == 'help':#'ip?':
             try:
-                await message.channel.send("LIST OF COMMANDS (case insensitive):")
-                await message.channel.send("meto: produces a meteogram graph of today\nifconfig: will print out the contents of ifconfig from the Linux terminal\ntraceroute: will traceroute and give the bubble IP")
+                await message.channel.send("LIST OF COMMANDS (case insensitive):\nmeto: produces a meteogram graph of today\nifconfig: will print out the contents of ifconfig from the Linux terminal\ntraceroute: will traceroute and give the bubble IP")
 
             except Exception as e:
                 await message.channel.send(f"An error has occurred: {str(e)}")
 
 
-client.run('YOUR LONG STRING OF LETTERS')
+client.run('YOURCODE')
