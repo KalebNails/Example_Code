@@ -1,0 +1,75 @@
+#Kaleb Nails
+
+#Don't really need this class, but its fine to include for this example
+class Message:
+    def __init__(self, content):
+        self.content = content
+
+# Create an instance of the Message class
+message = Message('meto 2024_09_14 2023_09_30')
+
+
+
+# This checks for the date arguement
+def contains_date(discord_message):
+    # Split the message into words
+    words = discord_message.split()
+
+    # Iterate through each word to check for the date format
+    date_cell = []
+    for word in words:
+        if len(word) == 10 and word.count('_') == 2:
+            # Check if the word has the format "YYYY_MM_DD"
+            try:
+                year, month, day = map(int, word.split('_'))
+                # You can add additional checks for valid date ranges if needed
+                if 2022 <= year <= 2200 and 1 <= month <= 12 and 1 <= day <= 31:
+
+                    date_cell.append({'year':year,'month':month,'day':day })
+
+            except ValueError:
+                # Ignore if there is a ValueError (e.g., non-integer parts)
+                pass
+
+    return  date_cell
+
+
+
+
+print(message.content.lower())
+if 'meto' in message.content.lower():#'ip?':
+    try:
+        print('its true')
+        python_script_path = 'discord_meteogram.py'
+
+        #argnum dictates how many arguements have as an input and sort the dates in order
+        date_cell = contains_date(message.content.lower())
+        print(f"the unsorted date_cell: \n {date_cell}")
+        date_cell = sorted(date_cell, key=lambda x: (x['year'], x['month'], x['day']))
+        print(f"the sorted date_cell: \n {date_cell}")
+        print(date_cell[0]['year'])
+
+        #checks for the propper amounts of dates
+        if  0<= len(date_cell) <= 2:
+            for i in date_cell:
+                print(i)
+                print('hello')
+                python_script_path += f" {i['year']}_{i['month']}_{i['day']}"
+                print(python_script_path)
+
+        else:
+            error_message = '''invalid amount of dates sent please enter following the example inputs below:
+                current date: meto
+                specific date: meto 2024_08_01
+                date range: meto 2023_06_05 2024_08_01'''
+
+            print(error_message)
+            #await message.channel.send(error_message)
+
+
+
+
+
+    except ValueError:
+        # Ignore if there is a ValueError (e.g., non-integer parts)
+        pass
