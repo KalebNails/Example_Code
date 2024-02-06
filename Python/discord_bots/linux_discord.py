@@ -168,4 +168,4 @@ async def on_message(message):
 
 
 
-client.run('MTE2MjIwNDIwOTg4MjYxNTgxOA.Gr1tXE.MsI1I9y5pY-CWXa-EWSfvjCPFsa4nzTf2qSmBE')
+client.run('YOUR AUTH')
