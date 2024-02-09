@@ -4,6 +4,13 @@
 #pip3 install dask
 #pip3 install discord
 
+
+# As a programmer I would like to admit this is not my most organized work.
+# Its not awful it just could be make shorter/better by either combining booleans
+# or checking for the inverse of the program. But this is a live version, and is serviced
+# so the original formating was not complementary to future plans. Now armed with this experience
+# the next bot I make will have a much cleaner tree.
+
 import subprocess
 import discord
 import sys
@@ -71,25 +78,36 @@ async def on_message(message):
                 date_cell = contains_date(message.content.lower())
                 print(f"the date cell is outside function {date_cell}")
 
-                #lazy bug fix`
-
-
+                #sort the data by date
                 print(f"the unsorted date_cell: \n {date_cell}")
                 date_cell = sorted(date_cell, key=lambda x: (x['year'], x['month'], x['day']))
                 print(f"the sorted date_cell: \n {date_cell}")
 
-                #checks for the propper amounts of dates
-                if  0<= len(date_cell) <= 2:
-                    for i in date_cell:
-                        python_script_path += f" {i['year']}_{str(i['month']).zfill(2)}_{str(i['day']).zfill(2)}"
-                        print(python_script_path)
+                #Runs from yesterdays data
+                if 'previous' in message.content.lower():
+                    await message.channel.send('''Hello, I am John Pheasent Kennedy.
+                        As a bot perfection is the final goal, unfortunately, my programer does not have this goal.
+                        Thus this feature has been delayed until further notice, as there is a compatability issue with this specific
+                        command that will be fixed in a future patch.''')
 
+                        #previous_weather_data_logfile.csv
+                        # subprocess.run(['python',python_script_path]) #######################
+
+
+                #checks for the propper amounts of dates
+                elif  0<= len(date_cell) <= 2:
+
+                    #THINK I CAN DELETE THE NEXT 3 lines
+                    #for i in date_cell:
+                        #python_script_path += f" {i['year']}_{str(i['month']).zfill(2)}_{str(i['day']).zfill(2)}"
+                        #print(python_script_path)
 
                     if len(date_cell) == 0:
                         python_script_path = 'discord_meteogram.py'
                         print(python_script_path)
                         await message.channel.send("Generating from demo linux 1 date")
-                        #subprocess.run(['python',python_script_path]) #######################
+                        subprocess.run(['python',python_script_path]) #######################
+                        await message.channel.send( file=discord.File('meteogram_image.png'))
 
                     #double check file exists
                     elif len(date_cell)==1:
@@ -99,12 +117,19 @@ async def on_message(message):
                         if os.path.exists(file_path):
                                 print("File exists.")
 
-                                python_script_path = f"discord_meteogram.py {date_cell[0]['year']}_{str(date_cell[0]['month']).zfill(2)}_{str(date_cell[0]['day']).zfill(2)}"
+                                #python_script_path = f"discord_meteogram.py {date_cell[0]['year']}_{str(date_cell[0]['month']).zfill(2)}_{str(date_cell[0]['day']).zfill(2)}"
+                                python_script_path = f"{date_cell[0]['year']}_{str(date_cell[0]['month']).zfill(2)}_{str(date_cell[0]['day']).zfill(2)}"
+
                                 print(python_script_path)
                                 await message.channel.send(f"Date exists. Generating demo linux {file_path}")
                                 #subprocess.run(['python',python_script_path]) #######################
+                                subprocess.run(['python','discord_meteogram.py',python_script_path]) #######################
+
+                                await message.channel.send( file=discord.File('meteogram_image.png'))
                         else:
                             print(f"File {file_path} does not exist. defaulting to current date")
+                            await message.channel.send(f" {file_path} {date_end} does not exist ")
+
 
 
                     #This is for a range of 2 dates
@@ -115,6 +140,7 @@ async def on_message(message):
                         print(date_start)
                         print(date_end)
 
+                        #Convert date format
                         start_date = datetime.strptime(date_start, '%Y_%m_%d')
                         end_date = datetime.strptime(date_end, '%Y_%m_%d')
 
@@ -135,10 +161,13 @@ async def on_message(message):
                         if all_exist:
                             # Run the subprocess
                             print(f"Date exist between {date_start} {date_end}.")
-                            python_script_path = f"discord_meteogram.py {date_start} {date_end}"
+
                             print(python_script_path)
                             await message.channel.send(f"Date exist between {date_start} {date_end}. Generating demo linux")
                             #subprocess.run(['python',python_script_path]) #######################
+                            subprocess.run(['python','discord_meteogram.py',date_start,date_end])
+                            await message.channel.send( file=discord.File('meteogram_image.png'))
+
                         else:
                             print("Not all files exist.")
                             await message.channel.send(f"not all dates exist between {date_start} and {date_end}.")
@@ -168,4 +197,4 @@ async def on_message(message):
 
 
 
-client.run('YOUR AUTH')
+client.run('YOUR_AUTH')
