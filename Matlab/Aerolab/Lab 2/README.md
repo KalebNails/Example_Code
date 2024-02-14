@@ -67,7 +67,8 @@ fprintf('the Reynolds number at 10 m/s is %.3g',reynolds_number_max_10)
 
 
 ```text:Output
-the Reynolds number at 10 m/s is 2.67e+04
+<font color='green'>the Reynolds number at 10 m/s is 2.67e+04</font>
+
 ```
 
 
@@ -129,7 +130,8 @@ fprintf('the Reynolds number at 20 m/s is %.3g',reynolds_number_max_10)
 
 
 ```text:Output
-the Reynolds number at 20 m/s is 2.67e+04
+<font color='green'>the Reynolds number at 20 m/s is 2.67e+04</font>
+
 ```
 
 
@@ -209,7 +211,8 @@ fprintf('the Cd number at 10 m/s is %.3g ± %.3g', integrated_value_10mps, Cd_er
 
 
 ```text:Output
-the Cd number at 10 m/s is 1.56 ± 1.54e-05
+<font color='green'>the Cd number at 10 m/s is 1.56 ± 1.54e-05</font>
+
 ```
 
 
@@ -219,7 +222,8 @@ fprintf('the Cd number at 20 m/s is %.3g ± %.3g', integrated_value_20mps, Cd_er
 
 
 ```text:Output
-the Cd number at 20 m/s is 1.64 ± 3.92e-06
+<font color='green'>the Cd number at 20 m/s is 1.64 ± 3.92e-06</font>
+
 ```
 
 
@@ -238,7 +242,8 @@ fprintf('the 2D Drag number at 10 m/s is %.3g ± %.3g newtons\n', Drag10, Drag_e
 
 
 ```text:Output
-the 2D Drag number at 10 m/s is 3.85 ± 3.81e-05 newtons
+<font color='green'>the 2D Drag number at 10 m/s is 3.85 ± 3.81e-05 newtons</font>
+
 ```
 
 
@@ -248,7 +253,8 @@ fprintf('the 2D Drag number at 20 m/s is %.3g ± %.3g newtons\n', Drag20, Drag_e
 
 
 ```text:Output
-the 2D Drag number at 20 m/s is 16 ± 3.81e-05 newtons
+<font color='green'>the 2D Drag number at 20 m/s is 16 ± 3.81e-05 newtons</font>
+
 ```
 
 
