@@ -5,11 +5,11 @@
 #pip3 install discord
 
 
-# As a programmer I would like to admit this is not my most organized work.
-# Its not awful it just could be make shorter/better by either combining booleans
-# or checking for the inverse of the program. But this is a live version, and is serviced
-# so the original formating was not complementary to future plans. Now armed with this experience
-# the next bot I make will have a much cleaner tree.
+
+# This is a live version, and future capabilities were not considered during the creation of the bot.
+#So, I would like to admit this is not my most organized work. Now armed with this experience
+# the next bot I make will have a much cleaner logic tree.
+# It's not awful it just could be make shorter/better by either combining booleans
 
 import subprocess
 import discord
