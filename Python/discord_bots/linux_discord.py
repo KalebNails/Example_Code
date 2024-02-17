@@ -189,14 +189,16 @@ async def on_message(message):
         if 'help' in message.content.lower():#'ip?':
             try:
                 await message.channel.send(
-                    "LIST OF COMMANDS (case insensitive):\n \n"
-                    "meto: \n Produces a meteogram graph of today\n \n"
-                    "meto YYYY_MM_DD: \n Will return the data at a specific date\n \n"
-                    "meto YYYY_MM_DD YYYY_MM_DD: \n Creates a graph of the fusion between all of the dates\n \n"
-                    "ifconfig: \n Will print out the contents of ifconfig from the Linux terminal\n \n"
-                    "traceroute: \n Will traceroute and give the bubble IP\n \n"
-                    "upload: \n Uploads todays data as csv \n \n"
-                    "upload YYYY_MM_DD: \n Uploads YYYY_MM_DD data as csv \n \n"
+                    "______\n **LIST OF COMMANDS** (case insensitive):\n \n"
+                    "meto: \n *Produces a meteogram graph of today*\n \n"
+                    "meto YYYY_MM_DD: \n *Will return the data at a specific date*\n \n"
+                    "meto YYYY_MM_DD YYYY_MM_DD: \n *Creates a graph of the fusion between all of the dates*\n \n"
+                    "ifconfig: \n *Prints out the contents of ifconfig from the Linux terminal*\n \n"
+                    "traceroute: \n *Will traceroute and give the bubble IP, no longer functional needs to be troubleshot*\n \n"
+                    "upload: \n *Uploads todays data as csv* \n \n"
+                    "upload YYYY_MM_DD: \n *Uploads that days data as csv* \n \n"
+                    " who: \n *tells you about me and my creator* \n __________"
+
                 )
             except Exception as e:
                 await message.channel.send(f"An error has occurred: {str(e)}")
@@ -259,6 +261,22 @@ async def on_message(message):
                     print(error_message)
                     await message.channel.send(error_message)
 
+            except Exception as e:
+                await message.channel.send(f"An error has occurred: {str(e)}")
+
+        #Credit
+        if 'who' in message.content.lower():#'ip?':
+            try:
+                await message.channel.send(
+                    "Hello, I was created by Kaleb Nails originally as a way to report an IP address of a remote raspberry pi that could have a new address asigned to it. This was to run a \n"
+                    "weather station that was mounted ~60ft up on a light pole. This weather station has a 3D sonic anonometer, RH sensor, and a temp sensor."
+                    "This was orignally done with traceroute and ifconfig, but I eventually grew to have more purposes. Now I have 2 instances, one on a linux desktop which is the bot you are"
+                    "talking to, but also on the pi mounted outside. The JPK outside has limited responsibilities, but I can create custom meteogram graphs at your request, as well as upload"
+                    "csv's at your request. Hopefully, after I have a security update, I will avaiable to the general public to use and enjoy."
+                    " \nKaleb Nails is an AE major who likes programming. My code can be found in the github link below, as well as Kaleb's linkedin. \n"
+                    "**GitHub**: \n https://github.com/KalebNails/Example_Code/blob/main/Python/discord_bots/linux_discord.py \n"
+                    "**LinkedIn**: \n https://www.linkedin.com/in/kaleb-nails \n"
+                )
             except Exception as e:
                 await message.channel.send(f"An error has occurred: {str(e)}")
 
