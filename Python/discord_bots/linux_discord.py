@@ -27,6 +27,7 @@ client = discord.Client(intents=intents)
 @client.event
 async def on_ready():
     print('Bot is online and ready')
+    await discord.utils.get(client.get_all_channels(), name='whats-the-ip').send("Hello, I'm John Pheasant Kennedy on the Linux machine. I have just woken up. Please type 'help' if you would like a list of commands.")
 
 # This checks for the date arguement
 def contains_date(discord_message):
@@ -188,12 +189,14 @@ async def on_message(message):
         if 'help' in message.content.lower():#'ip?':
             try:
                 await message.channel.send(
-                    "LIST OF COMMANDS (case insensitive):\n"
-                    "meto: produces a meteogram graph of today\n"
-                    "meto YYYY_MM_DD: will return the data at a specific date\n"
-                    "meto YYYY_MM_DD YYYY_MM_DD: creates a graph of the fusion between all of the dates"
-                    "ifconfig: will print out the contents of ifconfig from the Linux terminal\n"
-                    "traceroute: will traceroute and give the bubble IP\n"
+                    "LIST OF COMMANDS (case insensitive):\n \n"
+                    "meto: \n Produces a meteogram graph of today\n \n"
+                    "meto YYYY_MM_DD: \n Will return the data at a specific date\n \n"
+                    "meto YYYY_MM_DD YYYY_MM_DD: \n Creates a graph of the fusion between all of the dates\n \n"
+                    "ifconfig: \n Will print out the contents of ifconfig from the Linux terminal\n \n"
+                    "traceroute: \n Will traceroute and give the bubble IP\n \n"
+                    "upload: \n Uploads todays data as csv \n \n"
+                    "upload YYYY_MM_DD: \n Uploads YYYY_MM_DD data as csv \n \n"
                 )
             except Exception as e:
                 await message.channel.send(f"An error has occurred: {str(e)}")
