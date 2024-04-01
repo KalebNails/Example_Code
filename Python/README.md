@@ -29,15 +29,6 @@ I don't remember exactly what this is, but I believe its a way to generate multi
 
 # Files #
 
-## measure_performance.py ##
-Wonderful code that I found online that uses a decorator to report all kinds of details about a function such as consumed ram, and time it took to ran. great for optimizing
-
-## effective_area_structs.py ##
-This will take input points and their effective area of a body, give you the centriod, the shifted points, and the equation for stress and shear flow. As well as q_out-q_in for every point which you can use to solve. I also have a matlab version
-
-## effective_area_structs_fromC.py ##
-This is the same as effective_area_structs.py, but it starts you of from if you are given your centriod and shifted points already
-
 ## ard_reciever.py ##
 ### Real-time Data Visualization with Bokeh and Serial Communication ###
 
@@ -60,3 +51,14 @@ bokeh serve --show ard_receiver.py ```
 - It creates a Bokeh plot with an empty scatter plot.
 - Data received from the Arduino is continuously read and plotted on the Bokeh plot in real-time.
 - The plot dynamically updates as new data is received.
+
+
+## measure_performance.py ##
+Wonderful code that I found online that uses a decorator to report all kinds of details about a function such as consumed ram, and time it took to ran. great for optimizing
+
+## effective_area_structs.py ##
+This will take input points and their effective area of a body, give you the centriod, the shifted points, and the equation for stress and shear flow. As well as q_out-q_in for every point which you can use to solve. I also have a matlab version
+
+## effective_area_structs_fromC.py ##
+This is the same as effective_area_structs.py, but it starts you of from if you are given your centriod and shifted points already
+
