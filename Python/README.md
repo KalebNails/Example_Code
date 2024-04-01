@@ -37,3 +37,26 @@ This will take input points and their effective area of a body, give you the cen
 
 ## effective_area_structs_fromC.py ##
 This is the same as effective_area_structs.py, but it starts you of from if you are given your centriod and shifted points already
+
+## ard_reciever.py ##
+### Real-time Data Visualization with Bokeh and Serial Communication ###
+
+This Python script allows for real-time data visualization using Bokeh and serial communication with an Arduino device. The script reads data from the Arduino over a serial connection and plots it in a Bokeh plot, which is displayed in a web browser.
+
+### Requirements
+- Python 3.x
+- Bokeh
+- pyserial
+
+### Usage
+1. Connect your Arduino device to your computer.
+2. Run the script using the command:
+bash ```
+bokeh serve --show ard_receiver.py ```
+3. The Bokeh plot will open in your default web browser and display the data received from the Arduino device.
+
+### Description
+- The script initializes a serial connection with the Arduino device.
+- It creates a Bokeh plot with an empty scatter plot.
+- Data received from the Arduino is continuously read and plotted on the Bokeh plot in real-time.
+- The plot dynamically updates as new data is received.
