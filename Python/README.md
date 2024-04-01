@@ -42,8 +42,7 @@ This Python script allows for real-time data visualization using Bokeh and seria
 ### Usage
 1. Connect your Arduino device to your computer.
 2. Run the script using the command:
-bash ```
-bokeh serve --show ard_receiver.py ```
+```bokeh serve --show ard_receiver.py ```
 3. The Bokeh plot will open in your default web browser and display the data received from the Arduino device.
 
 ### Description
