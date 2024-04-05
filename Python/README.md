@@ -51,6 +51,24 @@ This Python script allows for real-time data visualization using Bokeh and seria
 - Data received from the Arduino is continuously read and plotted on the Bokeh plot in real-time.
 - The plot dynamically updates as new data is received.
 
+## Reboot Counter
+
+### Overview
+This Python script, `load_reboot_count.py`, tracks the number of times a system has rebooted. It uses a JSON file, `reboot_count.json`, to store the reboot count and dates of each reboot.
+
+### Usage
+1. Copy this code into your own code
+2. Run `load_reboot_count.py` to increment the reboot count and add the current date to the list of reboot dates.
+3. The script will output the updated reboot count.
+
+### File Descriptions
+- `load_reboot_count.py`: Python script for updating the reboot count and reboot dates.
+- `reboot_count.json`: JSON file storing the reboot count and reboot dates.
+
+### Notes
+- If `reboot_count.json` does not exist, the script will create it with an initial reboot count of 1 and an empty list of reboot dates.
+
+
 
 ## measure_performance.py ##
 Wonderful code that I found online that uses a decorator to report all kinds of details about a function such as consumed ram, and time it took to ran. great for optimizing
