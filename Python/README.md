@@ -1,4 +1,4 @@
-# Python Example Code Folders #
+# Python Example Code Directories #
 
 
 ## CDP ##
