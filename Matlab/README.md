@@ -22,6 +22,9 @@ This software calculates the maximum envelope (furthest reachable point) for a p
   <summary><strong>Space Mech Project 1 Code</strong></summary>
   
 This MATLAB script demonstrates various orbital mechanics calculations, focusing on determining orbital elements (e.g., semi-major axis, eccentricity, inclination) from position and velocity vectors. It identifies the orbital regime—circular, elliptical, parabolic, or hyperbolic—based on eccentricity, plots effective potential curves, performs numerical integration (ODE45) for two-body motion, and calculates time-based changes in true anomaly. Helper functions compute angular momentum, specific orbital energy, and transformations between orbital element space and Cartesian coordinates.
+![image](https://github.com/user-attachments/assets/a20c091c-43d0-4b6d-a18c-238b12146771)
+![image](https://github.com/user-attachments/assets/9e118b17-261f-44bd-8b92-97c5713dff4c)
+
 
 </details>
 
