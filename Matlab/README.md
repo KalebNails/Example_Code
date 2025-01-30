@@ -1,58 +1,82 @@
-# Why is this empty #
-A large amount of my matlab code is either for a class or for a project. So posting it online is not great. Thus a lot of my matlab code is just private. Most of the other matlab code is in seperate repositories. 
+# Why is this empty
 
-# MATLAB Files #
+  
+A large amount of my MATLAB code is either for a class or for a project. So posting it online is not ideal. Therefore, a lot of my MATLAB code remains private. Most of the other MATLAB code resides in separate repositories.
 
 
-## threeD_two_parabolas_collide.m ##
-This is software that takes an imaginary ball at the center at some point, calculates it maximium envelope or furthest point it can physically reach based on gravity, and initial speeds.
-Then it can calculate another parabolas interception point. This is shown in the image below. At some point i want to consider launch times, and other parameters. I would also at some point like
-incorperate drag into the envelope calculations.
+
+---
+
+# MATLAB Files
+
+<details>
+  <summary><strong>threeD_two_parabolas_collide.m</strong></summary>
+  
+This software calculates the maximum envelope (furthest reachable point) for a projectile under gravity and initial speeds, then determines how another parabola (a second projectile) can intercept that trajectory. Future improvements may include launching time offsets, additional parameters, and drag considerations.
 
 ![image](https://github.com/KalebNails/Matlab_Balistics_Interception/assets/102830532/262079f7-5b27-4077-aa93-40cce7fc3f0f)
 
+</details>
 
+<details>
+  <summary><strong>Space Mech Project 1 Code</strong></summary>
+  
+This MATLAB script demonstrates various orbital mechanics calculations, focusing on determining orbital elements (e.g., semi-major axis, eccentricity, inclination) from position and velocity vectors. It identifies the orbital regime—circular, elliptical, parabolic, or hyperbolic—based on eccentricity, plots effective potential curves, performs numerical integration (ODE45) for two-body motion, and calculates time-based changes in true anomaly. Helper functions compute angular momentum, specific orbital energy, and transformations between orbital element space and Cartesian coordinates.
 
- ## Lab_1_Code_Modified.mlx ##
- ### Overview ###
-This MATLAB Live Script (.mlx) file processes experimental data to calculate airspeed, uncertainties, and Reynolds number. The script then generates a plot of airspeed vs. frequency and creates a table with Reynolds numbers for each set of experimental conditions.
+</details>
 
-### Usage ###
-Open Lab_1_Code_Modified.mlx in MATLAB.
-Make sure the required data files (Dp_data_1.mat, Dp_data_2.mat, etc.) are in the same directory.
-Run the script to perform calculations and generate the desired outputs.
+<details>
+  <summary><strong>Lab_1_Code_Modified.mlx</strong></summary>
+  
+### Overview
+This MATLAB Live Script (.mlx) processes experimental data to calculate airspeed, uncertainties, and Reynolds numbers. It then generates a plot of airspeed vs. frequency and creates a table with Reynolds numbers for each set of conditions.
 
-### Contents ####
-* Data loading and preprocessing
-* Calculation of mean airspeeds and uncertainties
-* Plotting airspeed vs. frequency with error bars
-* Calculation and display of Reynolds numbers
+### Usage
+1. Open `Lab_1_Code_Modified.mlx` in MATLAB.  
+2. Ensure required data files (e.g., `Dp_data_1.mat`, `Dp_data_2.mat`) are in the same directory.  
+3. Run the script to perform calculations and produce outputs.
+
+### Contents
+* Data loading and preprocessing  
+* Calculation of mean airspeeds and uncertainties  
+* Plotting airspeed vs. frequency with error bars  
+* Calculation and display of Reynolds numbers  
 * Interpolation function for frequency based on airspeed
 
-## Live_Camera_Example1.m ##
-### Overview ### 
-This MATLAB script (Live_Camera_Example1.m) captures a live camera feed, processes the image, and identifies regions with specific colors. It uses the undistorted image based on camera calibration parameters.
+</details>
 
-### Usage ###
-Open Live_Camera_Example1.m in MATLAB.
-Make sure the required cameraParams.mat file is in the same directory.
-Connect a webcam to your system.
-Run the script to start the live camera feed and color-based region identification.
+<details>
+  <summary><strong>Live_Camera_Example1.m</strong></summary>
+  
+### Overview
+This MATLAB script captures a live camera feed, processes the image, and identifies regions of specific colors. It uses undistorted images based on camera calibration parameters.
 
-### Contents ####
-* Initialization and loading of camera parameters
-* Live camera feed capture and undistortion
+### Usage
+1. Open `Live_Camera_Example1.m` in MATLAB.  
+2. Ensure the `cameraParams.mat` file is in the same directory.  
+3. Connect a webcam.  
+4. Run the script to start the live feed and color-based region detection.
+
+### Contents
+* Initialization and loading of camera parameters  
+* Live camera feed capture and undistortion  
 * Identification of regions with specific colors
-* structs_stress_shear.m
 
-### Overview ### 
-This MATLAB script (structs_stress_shear.m) calculates the centroid, moment of inertia, and shear and normal stresses for a set of points with associated areas. It then outputs the results and generates shear and normal stress equations.
+</details>
 
-### Usage ###
-Open structs_stress_shear.m in MATLAB.
-Run the script to calculate centroid, moment of inertia, and stresses for the provided points.
+<details>
+  <summary><strong>structs_stress_shear.m</strong></summary>
+  
+### Overview
+Calculates the centroid, moment of inertia, and shear/normal stresses for a set of points and areas, then outputs results and generates corresponding stress equations.
 
-### Contents ####
-* Calculation of centroid coordinates and shifting points to centroid's reference frame
-* Calculation of moment of inertia and shear and normal stresses
+### Usage
+1. Open `structs_stress_shear.m` in MATLAB.  
+2. Run the script to compute centroid, moment of inertia, and stresses.
+
+### Contents
+* Calculation of centroid coordinates and shifting points to the centroid’s frame  
+* Moment of inertia and shear/normal stresses  
 * Display of results and stress equations
+
+</details>
